@@ -1,0 +1,2 @@
+INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('vienas', 'du', 'trys', '2021-05-04');
+INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('vse', 'sdvb', 'sdvbnt', '2021-07-04');

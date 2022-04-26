@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Blog | Posts</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<ul th:each="post: ${posts}">
+    <li>
+        <a th:text="${post.getTitle()}" th:href="@{/posts/{post_id}(post_id=${post.getPost_id()})}"></a>
+    </li>
+</ul>
+<div>
+    <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
+    <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
+            </span>
+    <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
+</div>
+<div>
+    <a th:href="@{/posts/post}">Create post</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>blog| Create post</title>
+</head>
+<body>
+<h1>Create post</h1>
+<form th:action="@{/posts/create}" th:object="${post}" method="post">
+    <div>Name: <input type="text" th:field="*{authorName}"></div>
+    <div>Title: <input type="text" th:field="*{title}"></div>
+    <div>Text: <textarea type="text" style="height: 300px; width: 300px" th:field="*{postedText}"/></div>
+    <div>Description: <input type="datetime-local" th:field="*{postTime}"></div>
+    <input type="submit" title="Create">
+</form>
+<div>
+    <a th:href="@{/posts}">Back to list</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Blog | Posts</title>
+</head>
+<body>
+<div th:object="${post}">
+    <h1 th:text="*{title}"></h1>
+    <h2 th:text="*{postedText}"></h2>
+    <p th:text="*{authorName}"></p>
+    <p th:text="*{postTime}"></p>
+</div>
+<div>
+    <a th:href="@{/posts}">Back to list</a>
+    <a th:href="@{/posts/post/(post_id=${post.getPost_id())}}">Update post</a>
+</div>
+</body>
+</html>
