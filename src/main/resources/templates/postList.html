@@ -1,7 +1,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Blog | Posts</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 <ul th:each="post: ${posts}">
@@ -19,5 +19,72 @@
 <div>
     <a th:href="@{/posts/post}">Create post</a>
 </div>
+
+<div class="container" th:each="post: ${posts}">
+    <div class="post">
+        <div class="actual-info">
+            <div class="picture">
+                <div class="img">
+                    <img class="avatar" th:src="@{/images/profile.png}">
+                </div>
+                <div class="username">
+                    <a th:text="${post.getAuthorName()}" th:href="@{/posts/{post_id}(post_id=${post.getPost_id()})}"></a>
+                        <br><span>2021.12.20 20:15:14</span></br>
+                </div>
+            </div>
+
+            <div class="text">
+                <img class="font" th:src="@{/images/1.png}">
+                <div>
+                    <h1 th:text="${post.getTitle()}"></h1>
+                    <p class="text" th:text="${post.getPostedText()}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button">
+        <div>Comment</div>
+    </div>
+
+    <div class="middle-hide">
+        <p>View comment</p>
+    </div>
+
+    <div class="comment">
+        <div class="picture">
+            <div class="username">
+                <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
+                    <br><span>2021.12.20 20:15:14</span></br>
+                </p>
+            </div>
+        </div>
+        <div class="text">
+            <h1>No title</h1>
+            <p>um, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
+            <div class="button">
+                <div>Comment</div>
+            </div>
+        </div>
+
+        <div class="picture">
+            <div class="username">
+                <p class="user"><a href="/user.html">Comentator2@gmail.com</a>
+                    <br><span>2021.12.20 20:15:14</span></br>
+                </p>
+            </div>
+        </div>
+        <div class="text">
+            <h1>No title</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe inventore fugiat perspiciatis maiores voluptatum est nam officia eum, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
+            <div class="button">
+                <div>Comment</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/script.js}"></script>
+
 </body>
 </html>

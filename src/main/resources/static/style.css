@@ -1,0 +1,71 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(239, 243, 217);
+}
+
+body.body-form {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+form {
+    padding: 20px;
+    margin: 0 16px;
+    display: block;
+    width: 40%;
+}
+
+form .form-inline {
+    display: grid;
+    grid-gap: 15px;
+}
+
+form .form{
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+form .form textarea {
+    resize: vertical;
+    height: 300px;
+}
+
+form .form input, form .form textarea{
+    padding: 8px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1.5px solid rgb(78, 78, 199);
+    outline: none;
+}
+
+h1.title {
+    text-align: center;
+    margin-bottom: 26px;
+    color: rgb(78, 78, 199);
+    font-size: 25px;
+}
+
+.submit, button {
+    padding: 10px 30px;
+    background: transparent;
+    color: rgb(78, 78, 199);
+    border: 1.5px solid rgb(78, 78, 199);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    font-weight: 600;
+}
+
+.submit:hover {
+    background: rgb(78, 78, 199);
+    color: white;
+}
