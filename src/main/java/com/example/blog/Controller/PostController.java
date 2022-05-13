@@ -17,6 +17,7 @@ import java.util.Optional;
 public class PostController {
 
     private PostRepository postRepository;
+//    private UserRepository userRepository;
 
     public PostController(PostRepository postRepository) {
         this.postRepository = postRepository;
@@ -28,7 +29,7 @@ public class PostController {
             Model model
     ) {
         Pageable pageable = Pageable
-                .ofSize(20)
+                .ofSize(5)
                 .withPage(pageNumber);
 
         Page<Post> postPage = postRepository.findAll(pageable);
@@ -75,4 +76,12 @@ public class PostController {
         model.addAttribute("post", createdPost);
         return "redirect:/posts/" + createdPost.getPost_id();
     }
+
+//    @PostMapping("/register")
+//    public String createUser(User user, Model model) {
+//        Post createdPost = userRepository.save(user);
+//
+//        model.addAttribute("post", createdPost);
+//        return "redirect:/posts/" + createdPost.getPost_id();
+//    }
 }

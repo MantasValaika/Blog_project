@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://mcdn.wallpapersafari.com/medium/88/99/IgZeb0.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+}
+
+p {
+    width: 100%;
+}
+
+p.user {
+    font-weight: bold;
+}
+
+p.text {
+    height: 193px;
+    overflow-y: hidden;
+    text-align: justify;
+    color: maroon;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: midnightblue;
+}
+
+h1.title {
+    text-align: center;
+    margin-bottom: 26px;
+    color: rgb(78, 78, 199);
+    font-size: 25px;
+}
+
+.navigator {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 40px 0;
+}
+
+a {
+    text-decoration: none;
+    color: blue
+}
+
+.container{
+    width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.container2 a {
+    margin: 0 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.container3 a {
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.container2 a:hover, .container3 a:hover {
+    background: rgb(78, 78, 199);
+    color: white;
+    font-size: 25px;
+}
+
+.logo {
+    max-height: 70px;
+}
+
+img.avatar {
+    height: 50px;
+    width: 50px;
+    padding-top: 10px;
+}
+
+img.font {
+    float: left;
+    height: 100%;
+    width: 200px;
+    margin-right: 15px;
+}
+
+.picture {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.username {
+    margin-left: 5px;
+    padding: 9px
+}
+
+span {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+div.text {
+    margin-right: 2em;
+    margin-top: 1em;
+    display: flex;
+}
+
+div.button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.submit, button, div.button div {
+    padding: 10px 30px;
+    background: transparent;
+    color: rgb(78, 78, 199);
+    border: 1.5px solid rgb(78, 78, 199);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    font-weight: 600;
+}
+
+.submit:hover, button.submit:hover, div.button div:hover {
+    background: rgb(78, 78, 199);
+    color: white;
+}
+
+div.middle-hide, div.middle-unhide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.middle-hide p, div.middle-unhide p {
+    border: 0.5px solid rgb(78, 78, 199);
+    width: 150px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.4s ease;
+}
+
+div.middle-hide p:hover, div.middle-unhide p:hover, div.button div:hover {
+    background: rgb(78, 78, 199);
+    color: white;
+    font-size: 20px;
+}
+
+div.post {
+    display: flex;
+    flex-direction: row;
+}
+
+div.all {
+    border-bottom: 0.1px solid rgb(58, 47, 47, 0.5);
+}
+
+div.comment {
+    margin-left: 6em;
+    visibility: hidden;
+    height: 0px;
+}
+
+div.pageable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+div.pageable a {
+    padding: 0 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+div.pageable a:hover {
+    font-size: 20px;
+}
+
+body.body-form {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+form {
+    padding: 20px;
+    margin: 0 16px;
+    display: block;
+    width: 40%;
+}
+
+form .form-inline {
+    display: grid;
+    grid-gap: 15px;
+}
+
+form .form{
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+form .form textarea {
+    resize: vertical;
+    height: 300px;
+}
+
+form .form input, form .form textarea{
+    padding: 8px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1.5px solid rgb(78, 78, 199);
+    outline: none;
+}

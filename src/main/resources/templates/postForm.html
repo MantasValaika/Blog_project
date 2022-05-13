@@ -1,9 +1,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>blog| Create post</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="body-form">
+    <div th:replace="fragments/fragments :: menu"></div>
+
     <form th:action="@{/posts/create}" th:object="${post}" method="post">
         <h1 class="title">Create post:</h1>
         <div class="form-inline">
@@ -20,12 +22,13 @@
                 <input class="submit" type="submit" title="Create">
             </div>
             <div class="form">
-                <button>
+                <button class="submit">
                 <a th:href="@{/posts}">Back to list</a>
                 </button>
             </div>
         </div>
     </form>
-    <script th:href="@{/script.js}"></script>
+
+    <script th:href="@{/js/script.js}"></script>
 </body>
 </html>

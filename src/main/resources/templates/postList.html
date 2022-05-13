@@ -1,24 +1,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>Blog | Posts</title>
-    <link rel="stylesheet" th:href="@{/styles.css}">
+<head th:replace="fragments/fragments :: head('Blog | Posts')">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<ul th:each="post: ${posts}">
-    <li>
-        <a th:text="${post.getTitle()}" th:href="@{/posts/{post_id}(post_id=${post.getPost_id()})}"></a>
-    </li>
-</ul>
-<div>
-    <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
-    <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
-            </span>
-    <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
-</div>
-<div>
-    <a th:href="@{/posts/post}">Create post</a>
-</div>
+<div th:replace="fragments/fragments :: menu"></div>
+
+<h1 th:text="#{blog.title}" class="title"></h1>
 
 <div class="container" th:each="post: ${posts}">
     <div class="post">
@@ -44,11 +31,11 @@
     </div>
 
     <div class="button">
-        <div>Comment</div>
+        <div th:text="#{list.comment}"></div>
     </div>
 
     <div class="middle-hide">
-        <p>View comment</p>
+        <p th:text="#{list.comments}">View comments</p>
     </div>
 
     <div class="comment">
@@ -83,8 +70,15 @@
         </div>
     </div>
 </div>
+<div class="pageable">
+    <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
+    <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
+            </span>
+    <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
+</div>
 
-<script th:src="@{/script.js}"></script>
+<script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>
