@@ -1,7 +1,7 @@
-package com.example.blog.Service;
+package com.example.blog.service;
 
-import com.example.blog.Repository.CommentRepository;
-import com.example.blog.Repository.entity.Comment;
+import com.example.blog.repository.CommentRepository;
+import com.example.blog.repository.entity.Comment;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

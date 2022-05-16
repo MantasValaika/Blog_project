@@ -1,9 +1,9 @@
-package com.example.blog.Controller;
+package com.example.blog.controller;
 
-import com.example.blog.Repository.entity.Comment;
-import com.example.blog.Repository.entity.Post;
-import com.example.blog.Service.CommentService;
-import com.example.blog.Service.PostService;
+import com.example.blog.repository.entity.Comment;
+import com.example.blog.repository.entity.Post;
+import com.example.blog.service.CommentService;
+import com.example.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;

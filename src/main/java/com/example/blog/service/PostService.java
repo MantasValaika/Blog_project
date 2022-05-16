@@ -1,7 +1,7 @@
-package com.example.blog.Service;
+package com.example.blog.service;
 
-import com.example.blog.Repository.PostRepository;
-import com.example.blog.Repository.entity.Post;
+import com.example.blog.repository.PostRepository;
+import com.example.blog.repository.entity.Post;
 import com.example.blog.exeption.PostNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

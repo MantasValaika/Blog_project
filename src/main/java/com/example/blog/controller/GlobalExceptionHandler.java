@@ -1,4 +1,4 @@
-package com.example.blog.Controller;
+package com.example.blog.controller;
 
 import com.example.blog.exeption.PostNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
