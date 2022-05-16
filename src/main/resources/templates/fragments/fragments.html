@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <title th:text="*{title}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="navigator" th:fragment="menu">
+        <div class="container1">
+            <a th:href="@{/posts}">
+                <img class="logo" th:src="@{/images/logo.jpg}"/>
+            </a>
+        </div>
+        <div class="container2">
+            <a class="active" th:href="@{/posts}" th:text="#{blog.list}"></a>
+            <a th:href="@{/posts/post}" th:text="#{blog.create}"></a>
+        </div>
+        <div class="container3">
+            <a th:href="@{?lang=lt}">LT</a>
+            <a th:href="@{?lang=en}">EN</a>
+        </div>
+    </div>
+</body>
+</html>

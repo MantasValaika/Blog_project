@@ -1,0 +1,26 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: head('Blog | Create comment')"></head>
+<body>
+<header th:replace="fragments/fragments :: menu"></header>
+
+<div class="body-form">
+    <form th:action="@{/posts/createComment}" th:object="${comment}" method="comment">
+        <h1 class="title" th:text="#{comment.create}"></h1>
+        <div class="form-inline">
+            <div class="form">
+                <label class="title" for="userName" th:text="#{create.name}"></label>
+                <input type="text" th:field="*{authorName}" id="userName">
+            </div>
+            <div class="form">
+                <label class="title" for="commentText" th:text="#{create.text}"></label>
+                    <textarea type="text" th:field="*{commentText}" id="commentText"/>
+            </div>
+            <div>
+                <button class="submit" type="submit" th:text="#{create.submit}"></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

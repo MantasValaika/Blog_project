@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -27,6 +27,7 @@ public class Post {
     @Column(name = "author_name")
     private String authorName;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "post_time")
-    private Date postTime;
+    private LocalDateTime postTime = LocalDateTime.now();
 }

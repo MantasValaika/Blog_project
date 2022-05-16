@@ -21,7 +21,13 @@ p.user {
 }
 
 p.text {
-    height: 193px;
+    height: 140px;
+    overflow-y: hidden;
+    text-align: justify;
+    color: maroon;
+}
+
+p.listed-text {
     overflow-y: hidden;
     text-align: justify;
     color: maroon;
@@ -48,9 +54,9 @@ h1.title {
     padding: 10px 0 40px 0;
 }
 
-a {
+a, label {
     text-decoration: none;
-    color: blue
+    color: rgb(78, 78, 199);
 }
 
 .container{
@@ -135,7 +141,7 @@ div.button {
 }
 
 .submit, button, div.button div {
-    padding: 10px 30px;
+    padding: 5px 20px;
     background: transparent;
     color: rgb(78, 78, 199);
     border: 1.5px solid rgb(78, 78, 199);
@@ -143,11 +149,13 @@ div.button {
     cursor: pointer;
     transition: 0.4s ease;
     font-weight: 600;
+    margin-left: 10px;
 }
 
 .submit:hover, button.submit:hover, div.button div:hover {
     background: rgb(78, 78, 199);
     color: white;
+    padding: 6px 21px;
 }
 
 div.middle-hide, div.middle-unhide {
@@ -159,6 +167,7 @@ div.middle-hide, div.middle-unhide {
 div.middle-hide p, div.middle-unhide p {
     border: 0.5px solid rgb(78, 78, 199);
     width: 150px;
+    color: rgb(78, 78, 199);
     border-radius: 20px;
     cursor: pointer;
     text-align: center;
@@ -203,7 +212,7 @@ div.pageable a:hover {
     font-size: 20px;
 }
 
-body.body-form {
+div.body-form {
     display: flex;
     justify-content:center;
     align-items: center;

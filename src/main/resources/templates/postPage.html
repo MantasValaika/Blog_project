@@ -1,18 +1,75 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>Blog | Posts</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
-</head>
+<head th:replace="fragments/fragments :: head('Blog | Posts')"></head>
 <body>
-<div th:object="${post}">
-    <h1 th:text="*{title}"></h1>
-    <h2 th:text="*{postedText}"></h2>
-    <p th:text="*{authorName}"></p>
-    <p th:text="*{postTime}"></p>
-</div>
-<div>
-    <a th:href="@{/posts}">Back to list</a>
-    <a th:href="@{/posts/post/(post_id=${post.getPost_id())}}">Update post</a>
-</div>
+    <header th:replace="fragments/fragments :: menu"></header>
+
+    <div class="container" th:object="${post}">
+        <div class="post">
+            <div class="actual-info">
+                <div class="picture">
+                    <div class="img">
+                        <img class="avatar" th:src="@{/images/profile.png}">
+                    </div>
+                    <div class="username">
+                        <a th:text="*{authorName}"></a>
+                        <br><span th:text="*{postTime}"></span></br>
+                    </div>
+                </div>
+
+                <div class="text">
+                    <img class="font" th:src="@{/images/1.png}">
+                    <div>
+                        <h1 th:text="*{title}"></h1>
+                        <p class="listed-text" th:text="*{postedText}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button">
+            <a th:href="@{/posts/post/(post_id=${post.getPost_id())}}">
+                <div th:text="#{list.update}"></div>
+            </a>
+            <div th:text="#{list.comment}"></div>
+        </div>
+
+        <div class="middle-hide">
+            <p th:text="#{list.comments}"></p>
+        </div>
+
+        <div class="comment">
+            <div class="picture">
+                <div class="username">
+                    <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
+                        <br><span>2021.12.20 20:15:14</span></br>
+                    </p>
+                </div>
+            </div>
+            <div class="text">
+                <h1>No title</h1>
+                <p>um, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
+                <div class="button">
+                    <div>Comment</div>
+                </div>
+            </div>
+
+            <div class="picture">
+                <div class="username">
+                    <p class="user"><a href="/user.html">Comentator2@gmail.com</a>
+                        <br><span>2021.12.20 20:15:14</span></br>
+                    </p>
+                </div>
+            </div>
+            <div class="text">
+                <h1>No title</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe inventore fugiat perspiciatis maiores voluptatum est nam officia eum, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
+                <div class="button">
+                    <div>Comment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>

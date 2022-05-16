@@ -1,33 +1,30 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>blog| Create post</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body class="body-form">
-    <div th:replace="fragments/fragments :: menu"></div>
+<head th:replace="fragments/fragments :: head('Blog | Create post')"></head>
+<body>
+    <header th:replace="fragments/fragments :: menu"></header>
 
-    <form th:action="@{/posts/create}" th:object="${post}" method="post">
-        <h1 class="title">Create post:</h1>
-        <div class="form-inline">
-            <div class="form">
-                <input type="text" th:field="*{authorName}" placeholder="Author name">
-            </div>
+    <div class="body-form">
+        <form th:action="@{/posts/createPost}" th:object="${post}" method="post">
+            <h1 class="title" th:text="#{blog.create}"></h1>
+            <div class="form-inline">
                 <div class="form">
-                <input type="text" th:field="*{title}" placeholder="title">
+                    <label class="title" for="authorName" th:text="#{create.name}"></label>
+                    <input type="text" th:field="*{authorName}" id="authorName">
+                </div>
+                <div class="form">
+                    <label class="title" for="title" th:text="#{create.title}"></label>
+                    <input type="text" th:field="*{title}" id="title">
+                </div>
+                <div class="form">
+                    <label class="title" for="text" th:text="#{create.text}"></label>
+                    <textarea type="text" th:field="*{postedText}" id="text"/>
+                </div>
+                <div>
+                    <button class="submit" type="submit" th:text="#{create.submit}"></button>
+                </div>
             </div>
-            <div class="form">
-                <textarea type="text" th:field="*{postedText}" placeholder="text"/>
-            </div>
-            <div>
-                <input class="submit" type="submit" title="Create">
-            </div>
-            <div class="form">
-                <button class="submit">
-                <a th:href="@{/posts}">Back to list</a>
-                </button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
     <script th:href="@{/js/script.js}"></script>
 </body>

@@ -1,38 +1,34 @@
 package com.example.blog.Controller;
 
-import com.example.blog.Repository.PostRepository;
+import com.example.blog.Repository.entity.Comment;
 import com.example.blog.Repository.entity.Post;
-import com.example.blog.exeption.PostNotFoundException;
+import com.example.blog.Service.CommentService;
+import com.example.blog.Service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/posts")
+@RequiredArgsConstructor
 public class PostController {
 
-    private PostRepository postRepository;
-//    private UserRepository userRepository;
-
-    public PostController(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
+    private final PostService postService;
+    private final CommentService commentService;
 
     @GetMapping
     public String getPostList(
             @RequestParam(name = "page", defaultValue = "0") int pageNumber,
             Model model
     ) {
-        Pageable pageable = Pageable
-                .ofSize(5)
-                .withPage(pageNumber);
 
-        Page<Post> postPage = postRepository.findAll(pageable);
+        Page<Post> postPage = postService.findAllPageable(5, pageNumber);
 
         List<Post> products = postPage.getContent();
 
@@ -46,16 +42,10 @@ public class PostController {
     @GetMapping(path = "/{post_id}")
     public String getPostPage(
             @PathVariable(name = "post_id") Long post_id,
-            @RequestParam(name = "showPost", required = false) boolean showPost,
+            @RequestParam(name = "author_name", required = false) boolean showPost,
             Model model
     ) {
-        Optional<Post> foundPost = postRepository.findById(post_id);
-
-        if (foundPost.isEmpty()) {
-            throw new PostNotFoundException();
-        }
-
-        Post post = foundPost.get();
+        Post post = postService.findById(post_id);
 
         model.addAttribute("author_name", showPost);
         model.addAttribute("post", post);
@@ -64,24 +54,44 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public String getPostForm(Model model) {
-        model.addAttribute("post", new Post());
+    public String getPostForm (Model model) {
         return "postForm";
     }
 
-    @PostMapping("/create")
-    public String createProduct(Post post, Model model) {
-        Post createdPost = postRepository.save(post);
+    @PostMapping("/createPost")
+    public String createPost(@Valid Post post, BindingResult errors, Model model) {
+        if (errors.hasErrors()) {
+            return "postForm";
+        }
+        Post createdPost = postService.create(post);
 
         model.addAttribute("post", createdPost);
         return "redirect:/posts/" + createdPost.getPost_id();
     }
 
-//    @PostMapping("/register")
-//    public String createUser(User user, Model model) {
-//        Post createdPost = userRepository.save(user);
-//
-//        model.addAttribute("post", createdPost);
-//        return "redirect:/posts/" + createdPost.getPost_id();
-//    }
+    @ModelAttribute("post")
+    public Post populateEmptyPost() {
+        return new Post();
+    }
+
+    @GetMapping("/comment")
+    public String getCommentForm (Model model) {
+        return "commentForm";
+    }
+
+    @PostMapping("/createComment")
+    public String createComment(@Valid Comment comment, BindingResult errors, Model model) {
+        if (errors.hasErrors()) {
+            return "commentForm";
+        }
+        Comment createdComment = commentService.create(comment);
+
+        model.addAttribute("comment", createdComment);
+        return "redirect:/posts/";
+    }
+
+    @ModelAttribute("comment")
+    public Comment populateEmptyComment() {
+        return new Comment();
+    }
 }
