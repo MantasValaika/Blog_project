@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "comment")
 public class Comment {
 
     @Id
@@ -25,4 +26,8 @@ public class Comment {
 
     @Column(name = "comment_time")
     private LocalDateTime commentTime = LocalDateTime.now();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private Post post;
 }

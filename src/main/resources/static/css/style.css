@@ -249,3 +249,7 @@ form .form input, form .form textarea{
     border: 1.5px solid rgb(78, 78, 199);
     outline: none;
 }
+
+#try2 {
+    display: none;
+}

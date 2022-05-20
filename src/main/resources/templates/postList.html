@@ -30,55 +30,39 @@
         </div>
     </div>
 
-    <a th:href="@{/posts/comment}">
+    <a th:href="@{/comment}">
         <div class="button">
             <div th:text="#{list.comment}"></div>
         </div>
     </a>
-
-    <div class="middle-hide">
-        <p th:text="#{list.comments}"></p>
-    </div>
-
-    <div class="comment">
-        <div class="picture">
-            <div class="username">
-                <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
-                    <br><span>2021.12.20 20:15:14</span></br>
-                </p>
-            </div>
-        </div>
-        <div class="text">
-            <h1>No title</h1>
-            <p>um, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
-            <div class="button">
-                <div>Comment</div>
-            </div>
+    <div class="all-comments">
+        <div class="middle-hide middle">
+            <p id="try1" th:text="#{list.comments}"></p>
+            <p id="try2" th:text="#{list.no_comments}"></p>
         </div>
 
-        <div class="picture">
-            <div class="username">
-                <p class="user"><a href="/user.html">Comentator2@gmail.com</a>
-                    <br><span>2021.12.20 20:15:14</span></br>
-                </p>
+        <div class="comment" th:each="comment: ${comments}">
+            <div class="picture">
+                <div class="username">
+                    <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
+                        <br><span th:text="${comment.getCommentTime()}"></span></br>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="text">
-            <h1>No title</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe inventore fugiat perspiciatis maiores voluptatum est nam officia eum, ipsa, corporis delectus amet nesciunt earum explicabo velit! Obcaecati excepturi culpa sed.</p>
-            <div class="button">
-                <div>Comment</div>
+            <div class="text">
+                <h1>No title</h1>
+                <p th:text="${comment.getCommentText()}"></p>
             </div>
         </div>
     </div>
 </div>
-<div class="pageable">
-    <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
-    <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
-                <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
-            </span>
-    <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
-</div>
+    <div class="pageable">
+        <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
+        <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
+                </span>
+        <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
+    </div>
 
 <script th:src="@{/js/script.js}"></script>
 

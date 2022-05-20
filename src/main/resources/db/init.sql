@@ -10,6 +10,6 @@ CREATE TABLE IF NOT EXISTS comment (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(255),
     comment_text VARCHAR(255),
-    comment_time DATE,
+    comment_time TIMESTAMP,
     FOREIGN KEY (id) REFERENCES post(post_id)
 );

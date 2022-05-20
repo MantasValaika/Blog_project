@@ -1,8 +1,6 @@
 package com.example.blog.controller;
 
-import com.example.blog.repository.entity.Comment;
 import com.example.blog.repository.entity.Post;
-import com.example.blog.service.CommentService;
 import com.example.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +18,6 @@ import javax.validation.Valid;
 public class PostController {
 
     private final PostService postService;
-    private final CommentService commentService;
 
     @GetMapping
     public String getPostList(
@@ -54,7 +51,7 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public String getPostForm (Model model) {
+    public String getPostForm(Model model) {
         return "postForm";
     }
 
@@ -74,24 +71,4 @@ public class PostController {
         return new Post();
     }
 
-    @GetMapping("/comment")
-    public String getCommentForm (Model model) {
-        return "commentForm";
-    }
-
-    @PostMapping("/createComment")
-    public String createComment(@Valid Comment comment, BindingResult errors, Model model) {
-        if (errors.hasErrors()) {
-            return "commentForm";
-        }
-        Comment createdComment = commentService.create(comment);
-
-        model.addAttribute("comment", createdComment);
-        return "redirect:/posts/";
-    }
-
-    @ModelAttribute("comment")
-    public Comment populateEmptyComment() {
-        return new Comment();
-    }
 }

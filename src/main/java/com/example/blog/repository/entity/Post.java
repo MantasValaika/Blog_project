@@ -3,15 +3,18 @@ package com.example.blog.repository.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "post")
 public class Post {
 
     @Id
@@ -27,7 +30,13 @@ public class Post {
     @Column(name = "author_name")
     private String authorName;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "post_time")
     private LocalDateTime postTime = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment>comments = new ArrayList<>();
+
+    public String getFormatedDateTime() {
+        return postTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
 }
