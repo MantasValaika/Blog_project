@@ -1,23 +1,24 @@
-<html xmlns:th="https://www.thymeleaf.org">
-<head th:fragment="head(title)">
-    <title th:text="*{title}"></title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
-<body>
-    <div class="navigator" th:fragment="menu">
-        <div class="container1">
-            <a th:href="@{/posts}">
-                <img class="logo" th:src="@{/images/logo.jpg}"/>
-            </a>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head(title)">
+        <title th:text="*{title}"></title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+    <body>
+        <div class="navigator" th:fragment="menu">
+            <div class="container1">
+                <a th:href="@{/public/posts}">
+                    <img class="logo" th:src="@{/images/logo.jpg}"/>
+                </a>
+            </div>
+            <div class="container2">
+                <a class="active" th:href="@{/public/posts}" th:text="#{blog.list}"></a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/posts/post}" th:text="#{blog.create}"></a>
+            </div>
+            <div class="container3">
+                <a th:href="@{?lang=lt}">LT</a>
+                <a th:href="@{?lang=en}">EN</a>
+                <span th:text="'Hello, ' + ${#authentication.name}"></span>
+            </div>
         </div>
-        <div class="container2">
-            <a class="active" th:href="@{/posts}" th:text="#{blog.list}"></a>
-            <a th:href="@{/posts/post}" th:text="#{blog.create}"></a>
-        </div>
-        <div class="container3">
-            <a th:href="@{?lang=lt}">LT</a>
-            <a th:href="@{?lang=en}">EN</a>
-        </div>
-    </div>
-</body>
+    </body>
 </html>

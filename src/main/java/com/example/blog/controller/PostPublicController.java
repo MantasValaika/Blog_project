@@ -6,16 +6,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import javax.validation.Valid;
 
 @Controller
-@RequestMapping(path = "/posts")
+@RequestMapping(path = "/public/posts")
 @RequiredArgsConstructor
-public class PostController {
+public class PostPublicController {
 
     private final PostService postService;
 
@@ -38,37 +36,15 @@ public class PostController {
 
     @GetMapping(path = "/{post_id}")
     public String getPostPage(
-            @PathVariable(name = "post_id") Long post_id,
+            @PathVariable(name = "post_id") Long postId,
             @RequestParam(name = "author_name", required = false) boolean showPost,
             Model model
     ) {
-        Post post = postService.findById(post_id);
+        Post post = postService.findById(postId);
 
         model.addAttribute("author_name", showPost);
         model.addAttribute("post", post);
 
         return "postPage";
     }
-
-    @GetMapping("/post")
-    public String getPostForm(Model model) {
-        return "postForm";
-    }
-
-    @PostMapping("/createPost")
-    public String createPost(@Valid Post post, BindingResult errors, Model model) {
-        if (errors.hasErrors()) {
-            return "postForm";
-        }
-        Post createdPost = postService.create(post);
-
-        model.addAttribute("post", createdPost);
-        return "redirect:/posts/" + createdPost.getPost_id();
-    }
-
-    @ModelAttribute("post")
-    public Post populateEmptyPost() {
-        return new Post();
-    }
-
 }

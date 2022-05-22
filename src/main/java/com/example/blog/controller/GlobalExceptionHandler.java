@@ -1,18 +1,17 @@
 package com.example.blog.controller;
 
 import com.example.blog.exeption.PostNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({ PostNotFoundException.class})
-    public final String handleException(Exception ex, WebRequest request) {
-        if (ex instanceof  PostNotFoundException) {
-            return "postNotFound";
-        } else {
-            return "error";
-        }
+
+    @ExceptionHandler(PostNotFoundException.class)
+    public String handleException() {
+        log.error("Looking for post that does not exict");
+        return "redirect:/posts";
     }
 }

@@ -1,0 +1,49 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Blog | Registration</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body class="body-form">
+<form th:action="@{/posts/register}" th:object="${post}">
+    <h1>Registration form</h1>
+    <div class="form-inline">
+        <div class="form">
+            <input type="text" id="first-name">
+            <label for="first-name">First name</label>
+        </div>
+        <div class="form">
+            <input type="text" id="last-name">
+            <label for="last-name">Last name</label>
+        </div>
+        <div class="form">
+            <input type="email" id="email">
+            <label for="email">Email</label>
+        </div>
+        <div class="form">
+            <input type="tel" id="phone">
+            <label for="phone">Phone number</label>
+        </div>
+        <div class="form">
+            <input type="text" id="adress">
+            <label for="adress">Adress</label>
+        </div>
+        <div class="form">
+            <input type="password" id="password">
+            <label for="password">Password</label>
+        </div>
+        <div class="form">
+            <input type="password" id="password2">
+            <label for="password2">Repeat password</label>
+        </div>
+        <div class="submit">
+            <input type="submit" title="Submit">
+        </div>
+    </div>
+</form>
+<div>
+    <a th:href="@{/posts}">Back to list</a>
+</div>
+
+    <script th:href="@{/script.js}"></script>
+</body>
+</html>

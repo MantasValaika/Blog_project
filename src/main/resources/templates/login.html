@@ -1,0 +1,19 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="fragments/fragments :: head('Login')"></head>
+    <body>
+        <div class="body-form">
+            <div th:if="${param.error}" th:text="#{login.badCredentials}"></div>
+            <form th:action="@{/login}" method="post">
+                <div>
+                    <span th:text="#{login.userNameLabel}"></span>
+                    <input type="text" name="username">
+                </div>
+                <div>
+                    <span th:text="#{login.passwordLabel}"></span>
+                    <input type="password" name="password">
+                </div>
+                <input type="submit" th:value="#{login.submit}">
+            </form>
+        </div>
+    </body>
+</html>

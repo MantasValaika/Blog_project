@@ -1,1 +1,12 @@
-INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Karas Ukrainoje', 'Praėjusį savaitgalį „The Sunday Times“ publikacijoje, kurioje cituojami Ukrainos žvalgybos šaltiniai, esą Rusija bandys atidaryti naują frontą prieš Ukrainą iš Moldovos įpilta žibalo į spekuliacijų ugnį, kuri įsižiebė dar balandžio paskutinėmis savaitėmis. Vienas iš šaltinių teigė, kad yra „nemažai požymių“, kurie rodo, kad netolimoje ateityje bus užpulta Moldova, turinti vos kelių tūkstančių karių kariuomenę. „Manome, kad Kremlius jau priėmė sprendimą pulti Moldovą. Moldovos likimas yra labai svarbus“, – „The Sunday Times“ sakė šaltinis. Tokie įspėjimai Moldovoje neatsitiktinai kursto baimes: po to, kai vasario 24-ąją pasitvirtino niūriausios prognozės dėl Rusijos planų atvirai ir visa jėga užpulti Ukrainą, daugiau niekas atsainiai nežiūrį net į teorines galimybes, ko gali griebtis Kremlius.', 'Mantello', '2021-05-04');
+INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Bla bla', 'Praėjusį savaitgalį The Sunday Times publikaie yra nemaža Mold M gali griebtis iiii.', 'Mantello', '2019-01-21T05:47:08.644');
+
+INSERT INTO roles(role) VALUES ('USER');
+INSERT INTO roles(role) VALUES ('ADMIN');
+
+INSERT INTO users(name, last_name, username, password) VALUES ('Vytas', 'Vytauskas', 'vycka', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+INSERT INTO users(name, last_name, username, password) VALUES ('Saulius', 'Sauliunas', 'saulenas', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+
+INSERT INTO users_roles(user_id, roles_id) VALUES (1, 1);
+INSERT INTO users_roles(user_id, roles_id) VALUES (1, 2);
+
+INSERT INTO users_roles(user_id, roles_id) VALUES(2, 1);
