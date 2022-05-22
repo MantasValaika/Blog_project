@@ -17,7 +17,10 @@
             <div class="container3">
                 <a th:href="@{?lang=lt}">LT</a>
                 <a th:href="@{?lang=en}">EN</a>
-                <span th:text="'Hello, ' + ${#authentication.name}"></span>
+                <a sec:authorize="isAnonymous()" th:href="@{/login}" th:text="#{login.submit}"></a>
+                <a sec:authorize="isAnonymous()" th:href="@{/public/register}" th:text="#{login.register}"></a>
+                <a sec:authorize="isAuthenticated()" th:action="${param.logout}" th:href="@{/public/posts}" th:text="#{login.logout}"></a>
+                <span sec:authorize="isAuthenticated()" th:text="#{login.hello} + ${#authentication.name}"></span>
             </div>
         </div>
     </body>

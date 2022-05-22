@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/posts/{post_id}(post_id=${post.getPost_id()})}/comment}">
+            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/posts/{post_id}(post_id=${post.getPost_id()})/comment}">
                 <div class="button">
                     <div th:text="#{list.comment}"></div>
                 </div>

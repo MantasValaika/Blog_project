@@ -1,49 +1,37 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <title>Blog | Registration</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
-</head>
-<body class="body-form">
-<form th:action="@{/posts/register}" th:object="${post}">
-    <h1>Registration form</h1>
-    <div class="form-inline">
-        <div class="form">
-            <input type="text" id="first-name">
-            <label for="first-name">First name</label>
-        </div>
-        <div class="form">
-            <input type="text" id="last-name">
-            <label for="last-name">Last name</label>
-        </div>
-        <div class="form">
-            <input type="email" id="email">
-            <label for="email">Email</label>
-        </div>
-        <div class="form">
-            <input type="tel" id="phone">
-            <label for="phone">Phone number</label>
-        </div>
-        <div class="form">
-            <input type="text" id="adress">
-            <label for="adress">Adress</label>
-        </div>
-        <div class="form">
-            <input type="password" id="password">
-            <label for="password">Password</label>
-        </div>
-        <div class="form">
-            <input type="password" id="password2">
-            <label for="password2">Repeat password</label>
-        </div>
-        <div class="submit">
-            <input type="submit" title="Submit">
-        </div>
-    </div>
-</form>
-<div>
-    <a th:href="@{/posts}">Back to list</a>
-</div>
+    <head th:replace="fragments/fragments :: head('Blog | Registration')"></head>
+    <body>
+        <header th:replace="fragments/fragments :: menu"></header>
 
-    <script th:href="@{/script.js}"></script>
-</body>
+        <div class="body-form">
+            <form th:action="@{/public/register/createUser}" th:object="${user}" method="post">
+                <h1>Registration form</h1>
+                <div class="form-inline">
+                    <div class="form">
+                        <label for="first-name" th:text="#{user.name}"></label>
+                        <input type="text" th:field="*{name}" id="first-name">
+                    </div>
+                    <div class="form">
+                        <label for="last-name" th:text="#{user.surname}"></label>
+                        <input type="text" th:field="*{lastName}" id="last-name">
+                    </div>
+                    <div class="form">
+                        <label for="email" th:text="#{user.mail}"></label>
+                        <input type="email" th:field="*{email}" id="email">
+                    </div>
+                    <div class="form">
+                        <label for="username" th:text="#{login.userNameLabel}"></label>
+                        <input type="text" th:field="*{username}" id="username">
+                    </div>
+                    <div class="form">
+                        <label for="password" th:text="#{login.passwordLabel}">Password</label>
+                        <input type="password" th:field="*{password}" id="password">
+                    </div>
+                    <div class="submit">
+                        <input type="submit" title="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

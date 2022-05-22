@@ -21,13 +21,13 @@ public class CommentPrivateController {
     private final CommentService commentService;
     private final PostService postService;
 
-    @GetMapping("/comment")
+    @GetMapping("/{post_id}/comment")
     @PreAuthorize("hasRole('ADMIN')")
     public String getCommentForm(Model model) {
         return "commentForm";
     }
 
-    @PostMapping("{post_id}/createComment")
+    @PostMapping("/{post_id}/createComment")
     @PreAuthorize("hasRole('ADMIN')")
     public String createComment(@Valid Comment comment, @Valid Post post, BindingResult errors, Model model) {
         if (errors.hasErrors()) {

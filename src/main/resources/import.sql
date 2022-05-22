@@ -3,8 +3,8 @@ INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Bla bla', 
 INSERT INTO roles(role) VALUES ('USER');
 INSERT INTO roles(role) VALUES ('ADMIN');
 
-INSERT INTO users(name, last_name, username, password) VALUES ('Vytas', 'Vytauskas', 'vycka', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
-INSERT INTO users(name, last_name, username, password) VALUES ('Saulius', 'Sauliunas', 'saulenas', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+INSERT INTO users(name, last_name, email, username, password) VALUES ('Vytas', 'Vytauskas', 'vytukas@yahoo.com', 'vycka', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+INSERT INTO users(name, last_name, email, username, password) VALUES ('Saulius', 'Sauliunas', 'sauliukas@gmail.com', 'saulenas', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
 
 INSERT INTO users_roles(user_id, roles_id) VALUES (1, 1);
 INSERT INTO users_roles(user_id, roles_id) VALUES (1, 2);
