@@ -34,7 +34,7 @@ public class Post {
     private LocalDateTime postTime = LocalDateTime.now();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Comment>comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
     public String getFormatedDateTime() {
         return postTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));

@@ -1,4 +1,4 @@
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="fragments/fragments :: head('Blog | ' + ${post.getTitle()})"></head>
     <body>
         <header th:replace="fragments/fragments :: menu"></header>
@@ -27,10 +27,12 @@
             </div>
 
             <div class="button">
-                <a th:href="@{/posts/post/(post_id=${post.getPost_id())}}">
-                    <div th:text="#{list.update}"></div>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/posts/post/(post_id=${post.getPost_id())}}">
+                    <div class="button" th:text="#{list.update}"></div>
                 </a>
-                <div th:text="#{list.comment}"></div>
+                <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{post_id}(post_id=${post.getPost_id()})/comment}">
+                    <div class="button" th:text="#{list.comment}"></div>
+                </a>
             </div>
 
             <div class="middle-hide">

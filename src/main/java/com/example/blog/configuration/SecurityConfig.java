@@ -36,20 +36,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/login/**", "/h2/**", "/public/**").permitAll()
-                    .antMatchers("/private/**").authenticated()
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/login/**", "/h2/**", "/public/**").permitAll()
+                .antMatchers("/private/**").authenticated()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .permitAll()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/login")
-                    .defaultSuccessUrl("/public/posts", true)
-                    .failureUrl("/login?error=true")
-                    .and()
+                .permitAll()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/public/posts", true)
+                .failureUrl("/login?error=true")
+                .and()
                 .logout()
-                    .logoutSuccessUrl("/public/posts")
-                    .permitAll();
+                .logoutSuccessUrl("/public/posts")
+                .permitAll();
 
         httpSecurity.csrf()
                 .ignoringAntMatchers("/h2/**");

@@ -12,15 +12,17 @@
             </div>
             <div class="container2">
                 <a class="active" th:href="@{/public/posts}" th:text="#{blog.list}"></a>
-                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/posts/post}" th:text="#{blog.create}"></a>
+                <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/post}" th:text="#{blog.create}"></a>
             </div>
             <div class="container3">
                 <a th:href="@{?lang=lt}">LT</a>
                 <a th:href="@{?lang=en}">EN</a>
                 <a sec:authorize="isAnonymous()" th:href="@{/login}" th:text="#{login.submit}"></a>
                 <a sec:authorize="isAnonymous()" th:href="@{/public/register}" th:text="#{login.register}"></a>
-                <a sec:authorize="isAuthenticated()" th:action="${param.logout}" th:href="@{/public/posts}" th:text="#{login.logout}"></a>
-                <span sec:authorize="isAuthenticated()" th:text="#{login.hello} + ${#authentication.name}"></span>
+                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+                    <input type="submit" value="logout"/>
+                </form>
+                <span class="head" sec:authorize="isAuthenticated()" th:text="#{login.hello} + ${#authentication.name}"></span>
             </div>
         </div>
     </body>

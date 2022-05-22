@@ -22,13 +22,13 @@ public class PostPrivateController {
     private final PostService postService;
 
     @GetMapping("/post")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public String getPostForm(Model model) {
         return "postForm";
     }
 
     @PostMapping("/createPost")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public String createPost(@Valid Post post, BindingResult errors, Model model) {
         if (errors.hasErrors()) {
             return "postForm";
@@ -36,7 +36,7 @@ public class PostPrivateController {
         Post createdPost = postService.create(post);
 
         model.addAttribute("post", createdPost);
-        return "redirect:/public//posts/" + createdPost.getPost_id();
+        return "redirect:/public/posts/" + createdPost.getPost_id();
     }
 
     @ModelAttribute("post")

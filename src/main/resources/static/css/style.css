@@ -85,10 +85,25 @@ a, label {
     padding: 10px;
 }
 
-.container2 a:hover, .container3 a:hover {
+.container3 form {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container3 form input{
+    background: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    color: rgb(78, 78, 199);
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.container2 a:hover, .container3 a:hover, .container3 form input:hover {
     background: rgb(78, 78, 199);
     color: white;
-    font-size: 25px;
 }
 
 .logo {
@@ -125,6 +140,10 @@ span {
     font-weight: normal;
 }
 
+span.head {
+    font-size: 15px;
+}
+
 div.text {
     margin-right: 2em;
     margin-top: 1em;
@@ -155,7 +174,6 @@ div.button {
 .submit:hover, button.submit:hover, div.button div:hover {
     background: rgb(78, 78, 199);
     color: white;
-    padding: 6px 21px;
 }
 
 div.middle-hide, div.middle-unhide {
@@ -177,7 +195,6 @@ div.middle-hide p, div.middle-unhide p {
 div.middle-hide p:hover, div.middle-unhide p:hover, div.button div:hover {
     background: rgb(78, 78, 199);
     color: white;
-    font-size: 20px;
 }
 
 div.post {

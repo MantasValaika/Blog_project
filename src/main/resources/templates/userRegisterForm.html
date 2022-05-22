@@ -5,7 +5,7 @@
 
         <div class="body-form">
             <form th:action="@{/public/register/createUser}" th:object="${user}" method="post">
-                <h1>Registration form</h1>
+                <h1 class="title" th:text="#{user.title}"></h1>
                 <div class="form-inline">
                     <div class="form">
                         <label for="first-name" th:text="#{user.name}"></label>
@@ -27,8 +27,8 @@
                         <label for="password" th:text="#{login.passwordLabel}">Password</label>
                         <input type="password" th:field="*{password}" id="password">
                     </div>
-                    <div class="submit">
-                        <input type="submit" title="Submit">
+                    <div>
+                        <button class="submit" type="submit" th:text="#{create.submit}"></button>
                     </div>
                 </div>
             </form>
