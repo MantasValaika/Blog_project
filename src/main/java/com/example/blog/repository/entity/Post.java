@@ -19,7 +19,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long post_id;
+    private Long postId;
 
     @Column(name = "title")
     private String title;
@@ -33,7 +33,7 @@ public class Post {
     @Column(name = "post_time")
     private LocalDateTime postTime = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();
 
     public String getFormatedDateTime() {

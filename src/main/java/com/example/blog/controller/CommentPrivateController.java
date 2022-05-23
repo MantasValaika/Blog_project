@@ -21,23 +21,30 @@ public class CommentPrivateController {
     private final CommentService commentService;
     private final PostService postService;
 
-    @GetMapping("/{post_id}/comment")
+    @GetMapping("/{postId}/comment")
     @PreAuthorize("hasRole('ADMIN')")
-    public String getCommentForm(Model model) {
+    public String getCommentForm(
+            @PathVariable(name = "postId") Long postId,
+            Model model) {
+        model.addAttribute("postId", postId);
         return "commentForm";
     }
 
-    @PostMapping("/{post_id}/createComment")
+    @PostMapping("/{postId}/createComment")
     @PreAuthorize("hasRole('ADMIN')")
-    public String createComment(@Valid Comment comment, @Valid Post post, BindingResult errors, Model model) {
+    public String createComment(
+            @PathVariable(name = "postId") Long postId,
+            @Valid Comment comment,
+            BindingResult errors,
+            Model model) {
         if (errors.hasErrors()) {
             return "commentForm";
         }
-        Comment createdComment = commentService.create(comment, post.getPost_id());
+        Comment createdComment = commentService.create(comment, postId);
 
         model.addAttribute("comment", createdComment);
-        model.addAttribute("post_id", post);
-        return "redirect:/public/posts/" + post.getPost_id();
+        model.addAttribute("postId", postId);
+        return "redirect:/public/posts/" + postId;
     }
 
     @ModelAttribute("comment")

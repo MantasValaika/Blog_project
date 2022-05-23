@@ -3,6 +3,7 @@ package com.example.blog.service;
 import com.example.blog.exeption.PostNotFoundException;
 import com.example.blog.repository.CommentRepository;
 import com.example.blog.repository.entity.Comment;
+import com.example.blog.repository.entity.Post;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +17,9 @@ public class CommentService {
         this.postService = postService;
     }
 
-    public Comment create(Comment comment, Long post_id) {
+    public Comment create(Comment comment, Long postId) {
+        Post post = postService.findById(postId);
+        comment.setPost(post);
         return commentRepository.save(comment);
     }
 

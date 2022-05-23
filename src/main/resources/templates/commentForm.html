@@ -4,7 +4,7 @@
     <header th:replace="fragments/fragments :: menu"></header>
 
         <div class="body-form">
-            <form th:action="@{/private/posts/{post_id}/createComment}" th:object="${comment}" method="post">
+            <form th:action="@{/private/posts/{postId}/createComment(postId=${postId})}" th:object="${comment}" method="post">
                 <h1 class="title" th:text="#{comment.create}"></h1>
                 <div class="form-inline">
                     <div class="form">

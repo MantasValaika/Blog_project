@@ -13,7 +13,7 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a th:text="${post.getAuthorName()}" th:href="@{/public/posts/{post_id}(post_id=${post.getPost_id()})}"></a>
+                            <a th:text="${post.getAuthorName()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
                                 <br><span th:text="${post.getPostTime()}"></span></br>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="text">
                         <img class="font" th:src="@{/images/1.png}">
                         <div>
-                            <a th:href="@{/public/posts/{post_id}(post_id=${post.getPost_id()})}">
+                            <a th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}">
                                 <h1 th:text="${post.getTitle()}"></h1>
                             </a>
                             <p class="text" th:text="${post.getPostedText()}"></p>
@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{post_id}(post_id=${post.getPost_id()})/comment}">
+            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{postId}/comment(postId=${post.getPostId()})}">
                 <div class="button">
                     <div th:text="#{list.comment}"></div>
                 </div>
@@ -40,18 +40,19 @@
                     <p id="try1" th:text="#{list.comments}"></p>
                     <p id="try2" th:text="#{list.no_comments}"></p>
                 </div>
-
-                <div class="comment" th:each="comment: ${comments}">
-                    <div class="picture">
-                        <div class="username">
-                            <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
-                                <br><span th:text="${comment.getCommentTime()}"></span></br>
-                            </p>
+                <div class="selectAllComments">
+                    <div class="comment" th:each="comment: ${post.getComments()}">
+                        <div class="picture">
+                            <div class="username">
+                                <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
+                                    <br><span th:text="${comment.getCommentTime()}"></span></br>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="text">
-                        <h1>No title</h1>
-                        <p th:text="${comment.getCommentText()}"></p>
+                        <div class="text">
+                            <h1>No title</h1>
+                            <p th:text="${comment.getCommentText()}"></p>
+                        </div>
                     </div>
                 </div>
             </div>

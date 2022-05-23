@@ -27,10 +27,10 @@
             </div>
 
             <div class="button">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/posts/post/(post_id=${post.getPost_id())}}">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/posts/post/(postId=${post.getPostId())}}">
                     <div class="button" th:text="#{list.update}"></div>
                 </a>
-                <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{post_id}(post_id=${post.getPost_id()})/comment}">
+                <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{postId}(postId=${post.getPostId()})/comment}">
                     <div class="button" th:text="#{list.comment}"></div>
                 </a>
             </div>

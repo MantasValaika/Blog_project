@@ -63,7 +63,7 @@ a, label {
     width: 1040px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .container2 a {
@@ -202,14 +202,20 @@ div.post {
     flex-direction: row;
 }
 
+div.post a {
+    cursor: none;
+}
+
 div.all {
     border-bottom: 0.1px solid rgb(58, 47, 47, 0.5);
 }
 
 div.comment {
     margin-left: 6em;
-    visibility: hidden;
-    height: 0px;
+}
+
+div.selectAllComments {
+    display: none;
 }
 
 div.pageable {

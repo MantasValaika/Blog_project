@@ -36,7 +36,7 @@ public class PostPrivateController {
         Post createdPost = postService.create(post);
 
         model.addAttribute("post", createdPost);
-        return "redirect:/public/posts/" + createdPost.getPost_id();
+        return "redirect:/public/posts/" + createdPost.getPostId();
     }
 
     @ModelAttribute("post")
