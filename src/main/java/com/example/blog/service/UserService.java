@@ -2,7 +2,6 @@ package com.example.blog.service;
 
 import com.example.blog.repository.UserRepository;
 import com.example.blog.repository.entity.Authority;
-import com.example.blog.repository.entity.Role;
 import com.example.blog.repository.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-
+    private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -26,10 +25,8 @@ public class UserService implements UserDetailsService {
     }
 
     public User create(User user) {
+        user.getRoles().add(roleService.findRole(Authority.USER));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role role = new Role();
-        role.setAuthority(Authority.USER);
-        user.getRoles().add(role);
         return userRepository.save(user);
     }
 }
