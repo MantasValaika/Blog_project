@@ -37,6 +37,6 @@ public class Post {
     private List<Comment> comments = new ArrayList<>();
 
     public String getFormatedDateTime() {
-        return postTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(this.postTime);
     }
 }

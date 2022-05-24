@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @NoArgsConstructor
@@ -30,4 +31,8 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
     private Post post;
+
+    public String getFormatedDateTime() {
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(this.commentTime);
+    }
 }
