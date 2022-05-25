@@ -1,6 +1,6 @@
-INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Sekmadienis', 'Praėjusį savaitgalį The Sunday Times publikaie yra nemaža Mold M gali griebtis iiii.', 'Mantello', '2019-01-21T05:47:08.644');
-INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Vasara', 'Praėjusį savaitgalį The Sunday Times publikaie yra nemaža vrkhfbkdjgfsjkgbhxbgvjlk vgvsg.kjnvgvhtrd dvtr drt bhdvghdbt bfdjh dntbyhrtbth riebtis iiii.', 'Kaminkretys', '2022-01-21T05:47:08.644');
-INSERT INTO post(title, posted_text, author_name, post_time) VALUES ('Žemaite', 'Pra svrbydstrxghThe Sunday Times publikaie yra nemaža Mold M gali griebtis iiii.', 'Plungė', '2022-03-21T08:47:08.644');
+INSERT INTO post(title, posted_text, post_time) VALUES ('Sekmadienis', 'Praėjusį savaitgalį The Sunday Times publikaie yra nemaža Mold M gali griebtis iiii.', '2019-01-21T05:47:08.644');
+INSERT INTO post(title, posted_text, post_time) VALUES ('Vasara', 'Praėjusį savaitgalį The Sunday Times publikaie yra nemaža vrkhfbkdjgfsjkgbhxbgvjlk vgvsg.kjnvgvhtrd dvtr drt bhdvghdbt bfdjh dntbyhrtbth riebtis iiii.', '2022-01-21T05:47:08.644');
+INSERT INTO post(title, posted_text, post_time) VALUES ('Žemaite', 'Pra svrbydstrxghThe Sunday Times publikaie yra nemaža Mold M gali griebtis iiii.', '2022-03-21T08:47:08.644');
 
 INSERT INTO roles(role) VALUES ('USER');
 INSERT INTO roles(role) VALUES ('ADMIN');

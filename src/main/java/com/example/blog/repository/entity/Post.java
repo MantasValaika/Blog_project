@@ -27,8 +27,9 @@ public class Post {
     @Column(name = "posted_text")
     private String postedText;
 
-    @Column(name = "author_name")
-    private String authorName;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user;
 
     @Column(name = "post_time")
     private LocalDateTime postTime = LocalDateTime.now();

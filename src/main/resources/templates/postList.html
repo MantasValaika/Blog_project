@@ -13,7 +13,7 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a th:text="${post.getAuthorName()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
+                            <a th:text="${post.getUser().getName()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
                                 <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>

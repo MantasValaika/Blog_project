@@ -19,9 +19,6 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "author_name")
-    private String authorName;
-
     @Column(name = "comment_text")
     private String commentText;
 
@@ -31,6 +28,8 @@ public class Comment {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
     private Post post;
+
+    private User user;
 
     public String getFormatedDateTime() {
         return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(this.commentTime);

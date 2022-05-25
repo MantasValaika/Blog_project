@@ -4,13 +4,9 @@
         <header th:replace="fragments/fragments :: menu"></header>
 
         <div class="body-form">
-            <form th:action="@{/private/posts/createPost}" th:object="${post}" method="post">
+            <form th:action="@{/private/posts/{userId}/createPost(userId=${id})}" th:object="${post}" method="post">
                 <h1 class="title" th:text="#{blog.create}"></h1>
                 <div class="form-inline">
-                    <div class="form">
-                        <label class="title" for="authorName" th:text="#{create.name}"></label>
-                        <input type="text" th:field="*{authorName}" id="authorName">
-                    </div>
                     <div class="form">
                         <label class="title" for="title" th:text="#{create.title}"></label>
                         <input type="text" th:field="*{title}" id="title">

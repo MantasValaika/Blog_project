@@ -7,10 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -27,13 +24,13 @@ public class PostPrivateController {
         return "postForm";
     }
 
-    @PostMapping("/createPost")
+    @PostMapping("/{userId}/createPost")
     @PreAuthorize("hasRole('USER')")
-    public String createPost(@Valid Post post, BindingResult errors, Model model) {
+    public String createPost(@RequestParam("userId") long usertId, @Valid Post post, BindingResult errors, Model model) {
         if (errors.hasErrors()) {
             return "postForm";
         }
-        Post createdPost = postService.create(post);
+        Post createdPost = postService.create(post, usertId);
 
         model.addAttribute("post", createdPost);
         return "redirect:/public/posts/" + createdPost.getPostId();
