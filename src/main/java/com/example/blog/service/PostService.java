@@ -21,6 +21,14 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    public Post edit(Post post) {
+        var originalPost = findById(post.getPostId());
+        originalPost.setTitle(post.getTitle());
+        originalPost.setPostedText(post.getPostedText());
+
+        return postRepository.save(originalPost);
+    }
+
     public Post findById(Long id) {
         return postRepository.findById(id).orElseThrow(PostNotFoundException::new);
     }

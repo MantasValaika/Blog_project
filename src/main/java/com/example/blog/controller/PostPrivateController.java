@@ -48,4 +48,31 @@ public class PostPrivateController {
     public Post populateEmptyPost() {
         return new Post();
     }
+
+    @GetMapping("/{postId}/edit")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String getPostEditForm(@PathVariable(name = "postId") long postId, Model model) {
+        Post post = postService.findById(postId);
+
+        model.addAttribute("post", post);
+        return "postEditeForm";
+    }
+
+    @PostMapping("/edit/{postId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String editPost(
+            @PathVariable(name = "postId") long postId,
+            @Valid Post post,
+            BindingResult errors,
+            Model model) {
+        if (errors.hasErrors()) {
+            return "postEditForm";
+        }
+        Post editePost = postService.edit(post);
+
+        model.addAttribute("edit", editePost);
+        return "redirect:/public/posts/" + editePost.getPostId();
+    }
+
+
 }

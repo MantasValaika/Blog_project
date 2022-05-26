@@ -27,7 +27,7 @@
             </div>
 
             <div class="button">
-                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/posts/post/(postId=${post.getPostId())}}">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/posts/{postId}/edit(postId=${post.getPostId()})}">
                     <div class="button" th:text="#{list.update}"></div>
                 </a>
                 <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/private/posts/{postId}/comment(postId=${post.getPostId()})}">
