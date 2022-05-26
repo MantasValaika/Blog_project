@@ -74,5 +74,10 @@ public class PostPrivateController {
         return "redirect:/public/posts/" + editePost.getPostId();
     }
 
-
+    @GetMapping("/{postId}/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String deletePost(@PathVariable(name = "postId") long postId) {
+        postService.delete(postId);
+        return "redirect:/public/posts";
+    }
 }

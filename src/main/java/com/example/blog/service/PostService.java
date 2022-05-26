@@ -29,6 +29,10 @@ public class PostService {
         return postRepository.save(originalPost);
     }
 
+    public void delete(long postId) {
+        postRepository.deleteById(postId);
+    }
+
     public Post findById(Long id) {
         return postRepository.findById(id).orElseThrow(PostNotFoundException::new);
     }

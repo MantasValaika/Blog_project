@@ -180,6 +180,7 @@ div.middle-hide, div.middle-unhide {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 10px;
 }
 
 div.middle-hide p, div.middle-unhide p {
