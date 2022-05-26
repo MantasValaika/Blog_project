@@ -1,9 +1,11 @@
 package com.example.blog.controller;
 
 import com.example.blog.repository.entity.Post;
+import com.example.blog.repository.entity.User;
 import com.example.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,13 +26,19 @@ public class PostPrivateController {
         return "postForm";
     }
 
-    @PostMapping("/{userId}/createPost")
+    @PostMapping("/createPost")
     @PreAuthorize("hasRole('USER')")
-    public String createPost(@RequestParam("userId") long usertId, @Valid Post post, BindingResult errors, Model model) {
+    public String createPost(
+            @Valid Post post,
+            BindingResult errors,
+            Model model) {
         if (errors.hasErrors()) {
             return "postForm";
         }
-        Post createdPost = postService.create(post, usertId);
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
+        Post createdPost = postService.create(post);
 
         model.addAttribute("post", createdPost);
         return "redirect:/public/posts/" + createdPost.getPostId();

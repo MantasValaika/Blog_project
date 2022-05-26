@@ -19,6 +19,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "comment_text")
     private String commentText;
 
@@ -29,6 +32,7 @@ public class Comment {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     public String getFormatedDateTime() {

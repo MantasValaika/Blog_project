@@ -212,6 +212,15 @@ div.all {
 
 div.comment {
     margin-left: 6em;
+    display: flex;
+}
+
+div.comment .text {
+    flex-direction: column;
+}
+
+div.comment .text h1 {
+    margin-top: -8px;
 }
 
 div.selectAllComments {

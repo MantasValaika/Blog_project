@@ -1,12 +1,8 @@
 package com.example.blog.service;
 
-import com.example.blog.repository.CommentRepository;
 import com.example.blog.repository.PostRepository;
-import com.example.blog.repository.UserRepository;
-import com.example.blog.repository.entity.Comment;
 import com.example.blog.repository.entity.Post;
 import com.example.blog.exeption.PostNotFoundException;
-import com.example.blog.repository.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,15 +16,8 @@ import org.springframework.stereotype.Service;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final CommentRepository commentRepository;
-    private final UserRepository userRepository;
 
-    Post post = new Post();
-    Comment comment = new Comment();
-
-    public Post create(Post post, long userId) {
-        User author = userRepository.getById(userId);
-        post.setUser(author);
+    public Post create(Post post) {
         return postRepository.save(post);
     }
 

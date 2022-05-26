@@ -11,8 +11,8 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a th:text="*{authorName}"></a>
-                            <br><span th:text="*{postTime}"></span></br>
+                            <a th:text="${post.getUser().getUsername()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
+                            <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>
 
@@ -44,13 +44,13 @@
                     <div class="comment" th:each="comment: ${post.getComments()}">
                         <div class="picture">
                             <div class="username">
-                                <p class="user"><a href="/user.html">Comentator1@gmail.com</a>
+                                <p class="user"><a href="/user.html" th:text="${comment.getUser().getUsername()}"></a>
                                     <br><span th:text="${comment.getFormatedDateTime()}"></span></br>
                                 </p>
                             </div>
                         </div>
                         <div class="text">
-                            <h1>No title</h1>
+                            <h1 th:text="${comment.getTitle()}"></h1>
                             <p th:text="${comment.getCommentText()}"></p>
                         </div>
                     </div>
