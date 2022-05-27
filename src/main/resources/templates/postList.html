@@ -44,7 +44,7 @@
                     <div class="comment" th:each="comment: ${post.getComments()}">
                         <div class="picture">
                             <div class="username">
-                                <p class="user"><a href="/user.html" th:text="${comment.getPost().getUser().getUsername()}"></a>
+                                <p class="user"><a href="/user.html" th:text="${comment.getUser().getUsername()}"></a>
                                     <br><span th:text="${comment.getFormatedDateTime()}"></span></br>
                                 </p>
                             </div>
