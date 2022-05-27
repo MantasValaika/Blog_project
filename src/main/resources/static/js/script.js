@@ -1,6 +1,5 @@
 let pushHide = document.querySelectorAll('div.all-comments');
 
-
 pushHide.forEach(function(elem) {
     elem.addEventListener('click', function() {
         let button = elem.querySelector('.middle');
@@ -19,4 +18,18 @@ pushHide.forEach(function(elem) {
             button.querySelector('#try2').style.display='none';
         }
 })
+});
+
+let confPsw = document.querySelector('button.submit-psw');
+
+confPsw.addEventListener('click', function(e) {
+    let psw1 = document.getElementById('password');
+    let psw2 = document.getElementById('password2');
+    let alert = document.querySelector('.alert');
+        if(psw1.value != psw2.value) {
+            alert.style.display = 'block';
+            e.preventDefault();
+        } else {
+            alert.style.display = 'none';
+        }
 });

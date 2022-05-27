@@ -36,7 +36,7 @@ public class Post {
     private LocalDateTime postTime = LocalDateTime.now();
 
     @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     public String getFormatedDateTime() {

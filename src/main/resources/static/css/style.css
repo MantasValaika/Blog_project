@@ -208,10 +208,6 @@ div.post {
     flex-direction: row;
 }
 
-div.post a {
-    cursor: none;
-}
-
 div.all {
     border-bottom: 0.1px solid rgb(58, 47, 47, 0.5);
 }
@@ -288,6 +284,6 @@ form .form input, form .form textarea{
     outline: none;
 }
 
-#try2 {
+#try2, .alert {
     display: none;
 }
