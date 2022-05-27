@@ -1,5 +1,6 @@
 package com.example.blog.service;
 
+import com.example.blog.exeption.PostNotFoundException;
 import com.example.blog.repository.UserRepository;
 import com.example.blog.repository.entity.Authority;
 import com.example.blog.repository.entity.User;
@@ -28,5 +29,9 @@ public class UserService implements UserDetailsService {
         user.getRoles().add(roleService.findRole(Authority.USER));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    public User findById(Long id) {
+        return userRepository.findById(id).orElseThrow(PostNotFoundException::new);
     }
 }

@@ -26,7 +26,7 @@ public class Post {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "posted_text")
+    @Column(name = "posted_text", columnDefinition = "ntext")
     private String postedText;
 
     @ManyToOne(fetch = FetchType.EAGER)

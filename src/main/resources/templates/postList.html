@@ -13,7 +13,7 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a th:text="${post.getUser().getUsername()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
+                            <a sec:authorize="hasRole('ROLE_USER')" th:text="${post.getUser().getUsername()}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
                                 <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="text">
                             <h1 th:text="${comment.getTitle()}"></h1>
-                            <p th:text="${comment.getCommentText()}"></p>
+                            <p class="text" th:text="${comment.getCommentText()}"></p>
                         </div>
                     </div>
                 </div>

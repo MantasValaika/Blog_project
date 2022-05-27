@@ -42,5 +42,4 @@ public class PostService {
 
         return postRepository.findAll(pageable);
     }
-
 }

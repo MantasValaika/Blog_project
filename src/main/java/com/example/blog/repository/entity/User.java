@@ -4,30 +4,38 @@ import com.example.blog.validation.EmailAdress;
 import com.example.blog.validation.PhoneNumber;
 import com.example.blog.validation.PhoneNumberType;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
+@Setter
+@Getter
 @Table(name = "users")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String lastName;
+
     @EmailAdress
     private String email;
+
     @PhoneNumber(phoneNumberType = PhoneNumberType.PARTIAL)
     private String phoneNumber;
+
+    @Column(unique = true)
     private String username;
+
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
