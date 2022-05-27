@@ -1,5 +1,6 @@
 package com.example.blog.repository.entity;
 
+import com.example.blog.validation.CommentText;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Comment {
     @Column(name = "title")
     private String title;
 
+    @CommentText
     @Column(name = "comment_text")
     private String commentText;
 

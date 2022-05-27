@@ -9,12 +9,15 @@
         <div class="form-inline">
             <div class="form">
                 <label class="title" for="title" th:text="#{edite.title}"></label>
-                <input type="text" th:field="*{title}" id="title">
+                <input type="text" th:field="*{title}" id="title" required>
             </div>
             <div class="form">
                 <label class="title" for="text" th:text="#{edite.text}"></label>
-                <textarea type="text" th:field="*{postedText}" id="text"/>
+                <textarea type="text" th:field="*{postedText}" id="text" required/>
             </div>
+            <ul>
+                <li th:each="err : ${#fields.errors('text')}" th:text="${err}"></li>
+            </ul>
             <div>
                 <button class="submit" type="submit" th:text="#{create.submit}"></button>
             </div>

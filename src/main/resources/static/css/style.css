@@ -217,6 +217,11 @@ div.comment {
     display: flex;
 }
 
+div.comment p.text{
+    inline-size: 600px;
+    overflow-wrap: break-word;
+}
+
 div.comment .text {
     flex-direction: column;
 }
