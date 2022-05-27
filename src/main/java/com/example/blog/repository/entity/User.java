@@ -1,5 +1,6 @@
 package com.example.blog.repository.entity;
 
+import com.example.blog.validation.EmailAdress;
 import com.example.blog.validation.PhoneNumber;
 import com.example.blog.validation.PhoneNumberType;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class User implements UserDetails {
     private Long id;
     private String name;
     private String lastName;
+    @EmailAdress
     private String email;
     @PhoneNumber(phoneNumberType = PhoneNumberType.PARTIAL)
     private String phoneNumber;
