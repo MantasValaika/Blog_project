@@ -1,8 +1,8 @@
 INSERT INTO roles(role) VALUES ('USER');
 INSERT INTO roles(role) VALUES ('ADMIN');
 
-INSERT INTO users(name, last_name, email, username, password) VALUES ('Vytas', 'Vytauskas', 'vytukas@yahoo.com', 'administrator', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
-INSERT INTO users(name, last_name, email, username, password) VALUES ('Saulius', 'Sauliunas', 'sauliukas@gmail.com', 'saulenas', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+INSERT INTO users(name, last_name, email, phone_number, username, password) VALUES ('Vytas', 'Vytauskas', 'vytukas@yahoo.com', '+37064294226', 'administrator', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
+INSERT INTO users(name, last_name, email, phone_number, username, password) VALUES ('Saulius', 'Sauliunas', 'sauliukas@gmail.com', '+37068524220', 'saulenas', '$2a$12$h7IrjjBWq1C1NWOD2SdSNeyZyAQpIGDl/rjNmP0dV3M95dVvP/VhO');
 
 INSERT INTO users_roles(user_id, roles_id) VALUES (1, 1);
 INSERT INTO users_roles(user_id, roles_id) VALUES (1, 2);

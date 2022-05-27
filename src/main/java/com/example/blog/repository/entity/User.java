@@ -1,5 +1,7 @@
 package com.example.blog.repository.entity;
 
+import com.example.blog.validation.PhoneNumber;
+import com.example.blog.validation.PhoneNumberType;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +23,8 @@ public class User implements UserDetails {
     private String name;
     private String lastName;
     private String email;
+    @PhoneNumber(phoneNumberType = PhoneNumberType.PARTIAL)
+    private String phoneNumber;
     private String username;
     private String password;
 

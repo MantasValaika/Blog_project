@@ -20,6 +20,13 @@
                         <input type="email" th:field="*{email}" id="email">
                     </div>
                     <div class="form">
+                        <label for="phone" th:text="#{user.phone}"></label>
+                        <input type="tel" th:field="*{phoneNumber}" id="phone" th:errorclass="error">
+                            <ul>
+                                <li th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}"></li>
+                            </ul>
+                    </div>
+                    <div class="form">
                         <label for="username" th:text="#{login.userNameLabel}"></label>
                         <input type="text" th:field="*{username}" id="username">
                     </div>

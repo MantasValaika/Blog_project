@@ -12,6 +12,11 @@ body {
     font-family: cursive;
 }
 
+li {
+    list-style-type: none;
+    color: red;
+}
+
 p {
     width: 100%;
 }
