@@ -15,9 +15,6 @@
                 <label class="title" for="text" th:text="#{edite.text}"></label>
                 <textarea type="text" th:field="*{postedText}" id="text" required/>
             </div>
-            <ul>
-                <li th:each="err : ${#fields.errors('text')}" th:text="${err}"></li>
-            </ul>
             <div>
                 <button class="submit" type="submit" th:text="#{create.submit}"></button>
             </div>
