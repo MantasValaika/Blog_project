@@ -11,14 +11,16 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <span th:text="${post.getUser().getUsername()}"></span>
+                            <span class="user" th:text="${post.getUser().getUsername()}"></span>
                             <a sec:authorize="hasRole('ROLE_USER')" th:text="#{info}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
                             <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>
 
                     <div class="text">
-                        <img class="font" th:src="@{/images/1.png}">
+                        <div>
+                            <img class="font" th:src="@{https://picsum.photos/id/3{id}/200/200(id=${post.getUser.getId()})}">
+                        </div>
                         <div>
                             <h1 th:text="*{title}"></h1>
                             <p class="listed-text" th:text="*{postedText}"></p>

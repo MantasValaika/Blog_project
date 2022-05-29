@@ -20,7 +20,9 @@
                     </div>
 
                     <div class="text">
-                        <img class="font" th:src="@{/images/1.png}">
+                        <div>
+                            <img class="font" th:src="@{https://picsum.photos/id/3{id}/200/200(id=${post.getUser.getId()})}">
+                        </div>
                         <div>
                             <a th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}">
                                 <h1 th:text="${post.getTitle()}"></h1>
