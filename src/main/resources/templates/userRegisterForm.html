@@ -36,6 +36,13 @@
                             </ul>
                     </div>
                     <div class="form">
+                        <label for="homeAddress" th:text="#{user.homeAddress}"></label>
+                        <input type="url" th:field="*{homeAddress}" id="homeAddress">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('homeAddress')}" th:errorclass="error" th:errors="*{homeAddress}"></li>
+                            </ul>
+                    </div>
+                    <div class="form">
                         <label for="username" th:text="#{login.userNameLabel}"></label>
                         <input type="text" th:field="*{username}" id="username">
                             <ul>

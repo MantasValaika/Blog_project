@@ -38,6 +38,12 @@ p.listed-text {
     color: maroon;
 }
 
+p.bottom {
+    padding-bottom: 50px;
+    text-align: center;
+    color: rgb(78, 78, 199);
+}
+
 h1 {
     font-size: 1.5em;
     margin: 0;

@@ -38,6 +38,9 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @NotEmpty(message = "{post.notEmpty}")
+    private String homeAddress;
+
+    @NotEmpty(message = "{post.notEmpty}")
     @Column(unique = true)
     private String username;
 

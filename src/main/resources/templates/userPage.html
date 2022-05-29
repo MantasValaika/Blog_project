@@ -26,6 +26,10 @@
                             <span th:text="#{user.phone}"></span>
                             <a th:href="@{tel:{to}(to=${user.getPhoneNumber()})}" th:text="${user.getPhoneNumber()}"></a>
                         </li>
+                        <li>
+                            <span th:text="#{user.homeAddress}"></span>
+                            <a th:href="@{https://www.google.com/maps/place/{id}(id=${user.getHomeAddress()})}" th:text="${user.getHomeAddress()}"></a>
+                        </li>
                     </ul>
                 </fieldset>
             </div>
