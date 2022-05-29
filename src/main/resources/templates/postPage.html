@@ -11,7 +11,8 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a th:text="${post.getUser().getUsername()}" th:href="@{/public/posts/{postId}(postId=${post.getPostId()})}"></a>
+                            <span th:text="${post.getUser().getUsername()}"></span>
+                            <a sec:authorize="hasRole('ROLE_USER')" th:text="#{info}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
                             <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>

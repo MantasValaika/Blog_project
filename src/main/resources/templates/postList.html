@@ -13,7 +13,8 @@
                             <img class="avatar" th:src="@{/images/profile.png}">
                         </div>
                         <div class="username">
-                            <a sec:authorize="hasRole('ROLE_USER')" th:text="${post.getUser().getUsername()}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
+                            <span class="user" th:text="${post.getUser().getUsername()}"></span>
+                            <a sec:authorize="hasRole('ROLE_USER')" th:text="#{info}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
                                 <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>
@@ -57,13 +58,15 @@
                 </div>
             </div>
         </div>
-            <div class="pageable">
-                <a th:href="@{/posts(page=${currentPage - 1})}"> < </a>
-                <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
-                            <a th:href="@{/posts(page=${page})}" th:text="${page + 1}"></a>
-                        </span>
-                <a th:href="@{/posts(page=${currentPage + 1})}"> > </a>
-            </div>
+
+        <div class="pageable">
+            <a th:href="@{/public/posts(page=${currentPage - 1})}"> < </a>
+            <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
+                        <a th:href="@{/public/posts(page=${page})}" th:text="${page + 1}"></a>
+                    </span>
+            <a th:href="@{/public/posts(page=${currentPage + 1})}"> > </a>
+        </div>
+
 
     <script th:src="@{/js/script.js}"></script>
 
