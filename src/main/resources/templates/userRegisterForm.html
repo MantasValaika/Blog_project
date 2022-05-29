@@ -9,33 +9,45 @@
                 <div class="form-inline">
                     <div class="form">
                         <label for="first-name" th:text="#{user.name}"></label>
-                        <input type="text" th:field="*{name}" id="first-name" required>
+                        <input type="text" th:field="*{name}" id="first-name">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label for="last-name" th:text="#{user.surname}"></label>
-                        <input type="text" th:field="*{lastName}" id="last-name" required>
+                        <input type="text" th:field="*{lastName}" id="last-name">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('lastName')}" th:errorclass="error" th:errors="*{lastName}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label for="email" th:text="#{user.mail}"></label>
-                        <input type="text" th:field="*{email}" id="email" required>
+                        <input type="text" th:field="*{email}" id="email">
                             <ul>
                                 <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
                             </ul>
                     </div>
                     <div class="form">
                         <label for="phone" th:text="#{user.phone}"></label>
-                        <input type="tel" th:field="*{phoneNumber}" id="phone" th:errorclass="error" required>
+                        <input type="tel" th:field="*{phoneNumber}" id="phone" th:errorclass="error">
                             <ul>
                                 <li th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}"></li>
                             </ul>
                     </div>
                     <div class="form">
                         <label for="username" th:text="#{login.userNameLabel}"></label>
-                        <input type="text" th:field="*{username}" id="username" required>
+                        <input type="text" th:field="*{username}" id="username">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label for="password" th:text="#{login.passwordLabel}"></label>
                         <input type="password" th:field="*{password}" id="password">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label for="password2" th:text="#{login.passwordLabel2}"></label>

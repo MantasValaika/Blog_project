@@ -9,11 +9,17 @@
                 <div class="form-inline">
                     <div class="form">
                         <label class="title" for="title" th:text="#{create.title}"></label>
-                        <input type="text" th:field="*{title}" id="title" required>
+                        <input type="text" th:field="*{title}" id="title">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('title')}" th:errorclass="error" th:errors="*{title}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label class="title" for="text" th:text="#{create.text}"></label>
-                        <textarea type="text" th:field="*{postedText}" id="text" required/>
+                        <textarea type="text" th:field="*{postedText}" id="text"/>
+                            <ul>
+                                <li th:if="${#fields.hasErrors('postedText')}" th:errorclass="error" th:errors="*{postedText}"></li>
+                            </ul>
                     </div>
                     <div>
                         <button class="submit" type="submit" th:text="#{create.submit}"></button>

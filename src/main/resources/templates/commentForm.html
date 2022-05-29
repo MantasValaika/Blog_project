@@ -9,11 +9,17 @@
                 <div class="form-inline">
                     <div class="form">
                         <label class="title" for="commentTitle" th:text="#{create.title}"></label>
-                        <input type="text" th:field="*{title}" id="commentTitle" required>
+                        <input type="text" th:field="*{title}" id="commentTitle">
+                            <ul>
+                                <li th:if="${#fields.hasErrors('title')}" th:errorclass="error" th:errors="*{title}"></li>
+                            </ul>
                     </div>
                     <div class="form">
                         <label class="title" for="commentText" th:text="#{create.text}"></label>
-                            <textarea type="text" th:field="*{commentText}" id="commentText" required/>
+                        <textarea type="text" th:field="*{commentText}" id="commentText"/>
+                            <ul>
+                                <li th:if="${#fields.hasErrors('commentText')}" th:errorclass="error" th:errors="*{commentText}"></li>
+                            </ul>
                     </div>
                     <ul>
                         <li th:each="err : ${#fields.errors('commentText')}" th:text="${err}"></li>

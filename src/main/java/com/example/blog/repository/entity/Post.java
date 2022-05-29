@@ -7,6 +7,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,10 +24,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title")
+    @NotEmpty(message = "{post.notEmpty}")
     private String title;
 
     @Column(name = "posted_text", columnDefinition = "ntext")
+    @NotEmpty(message = "{post.notEmpty}")
     private String postedText;
 
     @ManyToOne(fetch = FetchType.EAGER)

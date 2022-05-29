@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 @Data
@@ -24,7 +25,10 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "{post.notEmpty}")
     private String name;
+
+    @NotEmpty(message = "{post.notEmpty}")
     private String lastName;
 
     @EmailAdress
@@ -33,9 +37,11 @@ public class User implements UserDetails {
     @PhoneNumber(phoneNumberType = PhoneNumberType.PARTIAL)
     private String phoneNumber;
 
+    @NotEmpty(message = "{post.notEmpty}")
     @Column(unique = true)
     private String username;
 
+    @NotEmpty(message = "{post.notEmpty}")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

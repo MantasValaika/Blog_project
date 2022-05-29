@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -21,10 +22,12 @@ public class Comment {
     private Long id;
 
     @Column(name = "title")
+    @NotEmpty(message = "{post.notEmpty}")
     private String title;
 
     @CommentText
     @Column(name = "comment_text")
+    @NotEmpty(message = "{post.notEmpty}")
     private String commentText;
 
     @Column(name = "comment_time")
