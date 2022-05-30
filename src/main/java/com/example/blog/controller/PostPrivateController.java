@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -29,11 +30,14 @@ public class PostPrivateController {
     @PostMapping("/createPost")
     @PreAuthorize("hasRole('USER')")
     public String createPost(
-            @Valid Post post,
+            @Valid @ModelAttribute Post post,
             BindingResult errors,
+            final RedirectAttributes redirectAttributes,
             Model model) {
         if (errors.hasErrors()) {
-            return "postForm";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.post", errors);
+            redirectAttributes.addFlashAttribute("post", post);
+            return "redirect:/private/posts/post";
         }
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -54,7 +58,9 @@ public class PostPrivateController {
     public String getPostEditForm(@PathVariable(name = "postId") long postId, Model model) {
         Post post = postService.findById(postId);
 
-        model.addAttribute("post", post);
+        if (!model.containsAttribute("org.springframework.validation.BindingResult.post")) {
+            model.addAttribute("post", post);
+        }
         return "postEditeForm";
     }
 
@@ -62,11 +68,14 @@ public class PostPrivateController {
     @PreAuthorize("hasRole('ADMIN')")
     public String editPost(
             @PathVariable(name = "postId") long postId,
-            @Valid Post post,
+            @Valid @ModelAttribute Post post,
             BindingResult errors,
+            final RedirectAttributes redirectAttributes,
             Model model) {
         if (errors.hasErrors()) {
-            return "postEditForm";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.post", errors);
+            redirectAttributes.addFlashAttribute("post", post);
+            return "redirect:/private/posts/" + postId + "/edit";
         }
         Post editePost = postService.edit(post);
 

@@ -64,8 +64,8 @@
         <div class="pageable">
             <a th:href="@{/public/posts(page=${currentPage - 1})}"> < </a>
             <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
-                        <a th:href="@{/public/posts(page=${page})}" th:text="${page + 1}"></a>
-                    </span>
+                <a th:href="@{/public/posts(page=${page})}" th:text="${page + 1}"></a>
+            </span>
             <a th:href="@{/public/posts(page=${currentPage + 1})}"> > </a>
         </div>
 

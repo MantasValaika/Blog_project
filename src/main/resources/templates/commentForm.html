@@ -21,9 +21,6 @@
                                 <li th:if="${#fields.hasErrors('commentText')}" th:errorclass="error" th:errors="*{commentText}"></li>
                             </ul>
                     </div>
-                    <ul>
-                        <li th:each="err : ${#fields.errors('commentText')}" th:text="${err}"></li>
-                    </ul>
                     <div>
                         <button class="submit" type="submit" th:text="#{create.submit}"></button>
                     </div>

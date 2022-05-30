@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -33,11 +34,14 @@ public class CommentPrivateController {
     @PreAuthorize("hasRole('USER')")
     public String createComment(
             @PathVariable(name = "postId") Long postId,
-            @Valid Comment comment,
+            @Valid @ModelAttribute Comment comment,
             BindingResult errors,
+            final RedirectAttributes redirectAttributes,
             Model model) {
         if (errors.hasErrors()) {
-            return "commentForm";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.comment", errors);
+            redirectAttributes.addFlashAttribute("comment", comment);
+            return "redirect:/private/posts/" + postId + "/comment";
         }
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
