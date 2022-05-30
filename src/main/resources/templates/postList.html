@@ -14,7 +14,7 @@
                         </div>
                         <div class="username">
                             <span class="user" th:text="${post.getUser().getUsername()}"></span>
-                            <a sec:authorize="hasRole('ROLE_USER')" th:text="#{info}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{info}" th:href="@{/private/users/{id}(id=${post.getUser.getId()})}"></a>
                                 <br><span th:text="${post.getFormatedDateTime()}"></span></br>
                         </div>
                     </div>

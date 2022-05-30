@@ -37,7 +37,7 @@
                     </div>
                     <div class="form">
                         <label for="homeAddress" th:text="#{user.homeAddress}"></label>
-                        <input type="url" th:field="*{homeAddress}" id="homeAddress">
+                        <input type="text" th:field="*{homeAddress}" id="homeAddress">
                             <ul>
                                 <li th:if="${#fields.hasErrors('homeAddress')}" th:errorclass="error" th:errors="*{homeAddress}"></li>
                             </ul>
